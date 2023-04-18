@@ -1,17 +1,19 @@
-pragma solidity ^0.4.18;
-
+pragma solidity ^0.5.16;
 
 contract Ownable {
     address public owner;
 
-    event LogOwnershipTransfered(address indexed _currentOwner, address indexed _newOwner);
+    event LogOwnershipTransfered(
+        address indexed _currentOwner,
+        address indexed _newOwner
+    );
 
     modifier onlyOwner() {
         require(msg.sender == owner);
         _;
     }
 
-    function Ownable() public {
+    function ownable() public {
         owner = msg.sender;
     }
 

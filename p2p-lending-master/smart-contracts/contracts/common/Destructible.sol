@@ -1,16 +1,17 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.5.16;
 
-import './Ownable.sol';
+import "./Ownable.sol";
 
 contract Destructible is Ownable {
-    
-    function Destructible() public payable { }
+    function destructible() public payable {}
+
+    address payable public owner;
 
     function destroy() public onlyOwner {
         selfdestruct(owner);
     }
-    
-    function destroyAndSend(address _recipient) public onlyOwner {
+
+    function destroyAndSend(address payable _recipient) public onlyOwner {
         selfdestruct(_recipient);
     }
 }
